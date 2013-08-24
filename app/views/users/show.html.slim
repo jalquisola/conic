@@ -1,0 +1,17 @@
+p#notice = notice
+
+p
+  strong Username:
+  = @user.username
+p
+  strong Email:
+  = @user.email
+p
+  strong Mobile No:
+  = @user.mobile_no
+
+= link_to "Edit", edit_user_path(@user), {:class => "btn"}
+
+/= render :partial => "social"
+== create_social_links(@authorizations)
+

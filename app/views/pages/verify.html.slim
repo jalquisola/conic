@@ -1,0 +1,23 @@
+div class="alert alert-warning"
+  - if flash[:notice]
+    = flash[:notice]
+  - else
+    | We are currently processing your application. You will receive SMS when your account is activated.
+
+= form_for(@user, {:url => verify_user_path(@user), :method => "POST", :role => 'form'}) do |f|
+  - if @user.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@user.errors.count, "error")} prohibited this activity from being saved:"
+      ul
+        - @user.errors.full_messages.each do |message|
+          li = message
+
+  div class="form-group #{@user.mobile_no.blank? ? 'has-error' : ''}"
+    input type="text" name="user[mobile_no]" class="form-control" placeholder="Mobile No." value=@user.mobile_no
+
+  div class="form-group"
+    input type="text" name="user[verification_code]" class="form-control" placeholder="Code"
+
+  button type="submit" class="btn btn-default" Submit
+
+

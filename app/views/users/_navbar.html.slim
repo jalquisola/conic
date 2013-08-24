@@ -1,0 +1,25 @@
+div class="navbar-collapse collapse"
+  ul class="nav navbar-nav"
+    li class="" 
+      a href="/pages/get_started" Getting Started
+    li class="" 
+      a href="#" Breaking News
+    li class="" 
+      a href="#" Be Heard
+    li 
+      a href="#" About
+    li
+      a href="#" Contact
+
+  - if @user
+    ul class="nav navbar-nav navbar-right"
+      li class="" 
+        a href="/users/#{@user.id}"
+          = @user.mobile_no
+      li class="" 
+        a href="/signout" Sign out
+  - else
+    ul class="nav navbar-nav navbar-right"
+      li class="" 
+        a href="/signin" Sign in 
+

@@ -1,0 +1,41 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    title = "Conic"
+    meta name="author" content="Conic"
+    meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"
+    meta http-equiv="content-language" content="en"
+
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", :media => "all"
+    = stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+    = stylesheet_link_tag "signin"
+    = javascript_include_tag "application"
+
+  body
+    div class="container"
+      div class="services"
+        h3 class="form-signin-heading" Sign in with the following services
+        div class="buttons"
+          a href="/auth/facebook/callback" class="btn btn-large btn-primary"
+            i class="icon-facebook-sign icon"
+            | facebook
+          
+          a href="/auth/twitter" class="btn btn-large btn-primary"
+            i class="icon-twitter icon"
+            | twitter
+          
+          a href="https://api.dailymile.com/oauth/authorize?response_type=code&client_id=S1NtwgovuplnI1AgTOpvyVOnylXwJjaGpUkBsuTX&redirect_uri=http://4s7v.localtunnel.com/auth/dailymile/callback" class="btn btn-large btn-primary"
+            | dailymile connect
+
+          a href="/auth/dailymile/callback" class="btn btn-large btn-primary"
+            | dailymile
+
+      form class="form-signin"
+        h3 class="form-signin-heading" Sign in with email
+
+        input type="text" class="form-control" placeholder="Email Address"
+        input type="text" class="form-control" placeholder="Mobile No."
+        button class="btn btn-large btn-primary btn-block" type="submit" Sign in 
+

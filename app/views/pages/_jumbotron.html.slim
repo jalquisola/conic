@@ -1,0 +1,13 @@
+= content_for :jumbotron do
+  div class="jumbotron"
+    h1 IKoNiKmo
+    p class="lead"
+      = "- [i-kuh-nekt-moh]"
+    p class="lead"
+      | Free, unlimited and easy to use SMS support of your social apps
+
+    form action="/users" method="POST" class="form-inline" role="form"
+      div class="form-group"
+        input class="form-control" name="user[mobile_no]" id="mobile_no" placeholder="Enter your mobile no."
+
+      button type="submit" class="btn btn-success" href="#" Start now

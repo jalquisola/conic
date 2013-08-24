@@ -1,0 +1,37 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    title = "IKoNiKmo"
+    meta name="author" content="Conic"
+    meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"
+    meta http-equiv="content-language" content="en"
+
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", :media => "all"
+    = stylesheet_link_tag "jumbotron"
+    = stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+    = javascript_include_tag "application"
+
+  body
+    div class="navbar navbar-default navbar-fixed-top"
+      div class="container"
+        div class="navbar-header"
+          button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+            span class="icon-bar"
+            span class="icon-bar"
+            span class="icon-bar"
+          a class="navbar-brand" href="#"
+            | IKoNiKmo
+
+        = content_for?(:navbar) ? yield(:navbar) : (render :partial => "layouts/default/navbar")
+
+    div class="container"
+      = yield :jumbotron
+      div class="row"
+        div class="col-md-6" role="main"
+          = yield
+        div class="col-md-6"
+
+
+

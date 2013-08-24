@@ -1,0 +1,18 @@
+p
+  strong
+  | Don't use these services?
+  = link_to "Create an account", new_identity_path
+  |
+    or login below.
+
+= form_tag "auth/identity/callback" do
+  div class="field"
+    = label_tag :auth_key, "Email"
+    = text_field_tag :auth_key 
+
+  div class="field"
+    = label_tag :password
+    = password_field_tag :password
+
+  div class="actions"
+    = submit_tag "Login"
