@@ -1,0 +1,10 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: conic_development
+  pool: 5
+  host: localhost
+  username: conic
+  password:
+
+
