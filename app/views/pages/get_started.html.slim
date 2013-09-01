@@ -1,0 +1,23 @@
+- content_for :navbar2 do
+  ul class="nav nav-pills pull-right"
+    li
+      a href="/" Home
+    li class="active"
+      a href="/get_started" Get Started
+    /li
+      a href="/news" News
+    /li
+      a href="/freedom_wall" Wall
+    - if @user
+      li class="" 
+        a href="/users/#{@user.id}"
+          = @user.mobile_no
+      li class="" 
+        a href="/signout" Sign out
+    - else
+      li class="" 
+        a class="btn-large" href="/signin" Sign in 
+  
+
+h3 Coming Soon...
+

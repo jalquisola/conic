@@ -59,7 +59,6 @@ class UsersController < ApplicationController
     Rails.logger.info("code: #{code}")
     msg = SmsGenerator.verify_code(code)
     SmsWorker.perform_async({:message => msg, :mobile_no => @user.mobile_no})
-
   end
 
 end

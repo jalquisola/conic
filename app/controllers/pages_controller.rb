@@ -6,6 +6,12 @@ class PagesController < ApplicationController
   def get_started
   end
 
+  def news
+  end
+
+  def wall
+  end
+
   def register
     mobile_no = params[:mobile_no]
   end

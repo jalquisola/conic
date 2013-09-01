@@ -5,7 +5,7 @@ module UsersHelper
     partial_html << "<ul class='nav nav-pills nav-stacked'>"
     socials.each do |social| 
       link = "/auth/#{social}/callback"
-      link = "https://api.dailymile.com/oauth/authorize?response_type=code&client_id=S1NtwgovuplnI1AgTOpvyVOnylXwJjaGpUkBsuTX&redirect_uri=http://4s7v.localtunnel.com/auth/dailymile/callback" if social == "dailymile"
+      link = "https://api.dailymile.com/oauth/authorize?response_type=code&client_id=#{DAILYMILE_CONFIG['CLIENT_ID']}&redirect_uri=http://conic.dev/auth/dailymile/callback" if social == "dailymile"
 
       partial_html << <<-HTML
         <li class=''>

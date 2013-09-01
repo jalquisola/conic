@@ -6,6 +6,9 @@ Conic::Application.routes.draw do
   match "signout" => "sessions#destroy", :as => "signout"
   match "signin" => "sessions#new", :as => "signin"
   match "verify/:mobile_no" => "pages#verify", :as => "verify"
+  match "get_started" => "pages#get_started"
+  #match "news" => "pages#news"
+  #match "freedom_wall" => "pages#wall"
 
   resources :identities
   resources :sessions
