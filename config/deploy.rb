@@ -62,12 +62,20 @@ namespace :deploy do
     sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
     run "mkdir -p #{shared_path}/config"
     put File.read("config/database.yml.example"), "#{shared_path}/config/database.yml"
+    put File.read("config/dailymile.yml.example"), "#{shared_path}/config/dailymile.yml"
+    put File.read("config/redis.yml.example"), "#{shared_path}/config/redis.yml"
+    put File.read("config/sidekiq.yml.example"), "#{shared_path}/config/sidekiq.yml"
+    put File.read("config/twitter.yml.example"), "#{shared_path}/config/twitter.yml"
     puts "Now edit the config files in #{shared_path}."
   end
   after "deploy:setup", "deploy:setup_config"
  
   task :symlink_config, roles: :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/config/dailymile.yml #{release_path}/config/dailymile.yml"
+    run "ln -nfs #{shared_path}/config/redis.yml #{release_path}/config/redis.yml"
+    run "ln -nfs #{shared_path}/config/sidekiq.yml #{release_path}/config/sidekiq.yml"
+    run "ln -nfs #{shared_path}/config/twitter.yml #{release_path}/config/twitter.yml"
   end
   after "deploy:finalize_update", "deploy:symlink_config"
  
