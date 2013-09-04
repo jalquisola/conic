@@ -1,12 +1,14 @@
 = content_for :jumbotron do
   div class="jumbotron"
-    h1 IKoNiKmo
-    p class="lead"
+    /h1 IKoNiKmo
+    /p class="lead"
       = "- [i-kuh-nekt-moh]"
-    p class="lead"
+    /p class="lead"
       | FREE, unlimited and easy to use SMS support of your social apps
 
-    form action="/users" method="POST" class="form-inline" role="form"
+    h1 Be connected.
+
+    form action="/users" method="POST" class="form" role="form"
       div class="form-group" style="margin-right: 10px;"
         input class="form-control" name="user[mobile_no]" id="mobile_no" placeholder="Enter your mobile no."
 
