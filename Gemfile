@@ -53,5 +53,4 @@ gem 'omniauth-dailymile', :github => 'hampei/omniauth-dailymile'
 gem "savon", "~>2.0"
 gem "twitter"
 gem "sidekiq"
-gem "strong_parameters"
 
