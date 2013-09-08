@@ -1,14 +1,9 @@
 = content_for :jumbotron do
   div class="jumbotron"
-    /h1 IKoNiKmo
-    /p class="lead"
-      = "- [i-kuh-nekt-moh]"
-    /p class="lead"
-      | FREE, unlimited and easy to use SMS support of your social apps
-
     h1 Be connected.
 
     form action="/users" method="POST" class="form" role="form"
+    = form_tag("/users", {method: "post", class: "form"}) do 
       div class="form-group" style="margin-right: 10px;"
         input class="form-control" name="user[mobile_no]" id="mobile_no" placeholder="Enter your mobile no."
 
