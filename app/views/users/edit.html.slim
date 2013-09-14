@@ -4,11 +4,11 @@ div class="alert alert-dismissable"
   button type="button" class="close" data-dismiss="alert" aria-hidden="true" &times;
   | We are currently processing your application. You will receive SMS when your account is activated. For the meantime, complete your profile below and konik your social applications.
 
-div class="settings"
-  == render 'form'
+div class="row"
+  div class="settings col-md-6 col-md-offset-2"
+    == render 'form'
 
-/== render :partial => "social"
-.social_links.row
-  .col-md-8
+.social_links.row style="margin: 20px 10px 0px 0px"
+  div class="col-md-8"
     == create_social_links(@authorizations)
 

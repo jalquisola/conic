@@ -1,0 +1,18 @@
+= form_for @short_message, {:role => "form"} do |f|
+  - if @short_message.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@short_message.errors.count, "error")} prohibited this short_message from being saved:"
+      ul
+        - @short_message.errors.full_messages.each do |message|
+          li = message
+
+  div class="form-group"
+    label for="short_message_target" Cell #:
+    = f.text_field :target, {:class => "form-control", :placeholder => "enter cell #"}
+
+  div class="form-group"
+    label for="short_message_content" Message:
+    = f.text_area :content, {:class => "form-control", :placeholder => "Enter Message"}
+ 
+  .actions = f.submit 'Save'
+

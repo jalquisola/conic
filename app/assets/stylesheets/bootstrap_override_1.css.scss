@@ -1,0 +1,8 @@
+.jumbotron{
+  background-color: #f2eeef;
+}
+
+body{
+  /*background-color: #00364a;*/
+  @include background(linear-gradient(#000002, #00364A) left repeat);
+}

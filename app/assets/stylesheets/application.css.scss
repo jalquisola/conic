@@ -9,10 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  */
 
+@import "bourbon";
 @import "bootstrapv3.0.0";
 @import "jumbotron-narrow";
+//@import "bootstrap_override_1";
 @import "bootstrap_override";
 //@import "justified-nav";

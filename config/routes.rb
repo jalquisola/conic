@@ -1,5 +1,7 @@
 Conic::Application.routes.draw do
 
+  resources :short_messages
+
   resources :activities
 
   post "/auth/:provider/callback" => "sessions#create"

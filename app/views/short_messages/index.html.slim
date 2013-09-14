@@ -1,0 +1,17 @@
+h1 Listing short_messages
+
+table
+  tr
+    th
+    th
+    th
+
+  - @short_messages.each do |short_message|
+    tr
+      td = link_to 'Show', short_message
+      td = link_to 'Edit', edit_short_message_path(short_message)
+      td = link_to 'Destroy', short_message, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Short message', new_short_message_path

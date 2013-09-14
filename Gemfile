@@ -50,7 +50,8 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
 gem 'omniauth-identity'
 gem 'omniauth-dailymile', :github => 'hampei/omniauth-dailymile'
-gem "savon", "~>2.0"
+gem "savon", "~>2.3.0"
 gem "twitter"
 gem "sidekiq"
+gem "bourbon"
 

@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :firstname
       t.string :lastname
       t.string :verification_code
+      t.string :verification_expired_at
       t.string :email
       t.string :slug
 
