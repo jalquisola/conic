@@ -28,6 +28,11 @@ class ShortMessagesController < ApplicationController
 
     respond_to do |format|
       if @short_message.save
+        client = Savon.client(wsdl: GLOBE_LABS_CONFIG["wsdl"], :endpoint => GLOBE_LABS_CONFIG["endpoint"])
+        resp = client.call(:send_sms, :message => {"uName" => GLOBE_LABS_CONFIG["uName"], "uPin" => GLOBE_LABS_CONFIG["uPin"], "MSISDN" => @short_message.target, "messageString" => @short_message.content, "Display" => 1, "udh" => "", "mwi" => "", "coding" => 0}) 
+
+        Rails.logger.info("=== savon client resp: #{resp.inspect}")
+
         format.html { redirect_to @short_message, notice: 'Short message was successfully created.' }
         format.json { render action: 'show', status: :created, location: @short_message }
       else
@@ -69,6 +74,6 @@ class ShortMessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def short_message_params
-      params[:short_message]
+      params[:short_message].permit(:target, :content)
     end
 end
