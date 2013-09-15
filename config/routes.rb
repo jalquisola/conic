@@ -5,7 +5,7 @@ Conic::Application.routes.draw do
   resources :activities
 
   post "/auth/:provider/callback" => "sessions#create"
-  post "signout" => "sessions#destroy", :as => "signout"
+  get "signout" => "sessions#destroy", :as => "signout"
   get "signin" => "sessions#new", :as => "signin"
   get "verify/:mobile_no" => "pages#verify", :as => "verify"
   get "get_started" => "pages#get_started"

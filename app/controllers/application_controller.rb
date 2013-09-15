@@ -27,13 +27,25 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     Rails.logger.info("current_user: #{current_user.inspect}")
     if current_user.blank?
-      redirect_to signin_path, :notice => "Login First!"
+      redirect_to root_path, :notice => "Login First!"
+      return
     end
 
-    if current_user.id != params[:id].to_i
-      @current_user = nil
-      session[:user_id] = nil
-      redirect_to signin_path, :notice => "Login First!"
+    if ["short_messages"].include?(params[:controller]) && current_user.mobile_no != "97919534"
+      redirect_to "/get_started", :notice => "You have no access to that page."
+      return
+    end
+
+    if ["users"].include?(params[:controller]) && ["list"].include?(params[:action]) && current_user.mobile_no != "97919534"
+      redirect_to "/get_started", :notice => "You have no access to that page."
+      return
+    end
+
+    Rails.logger.info("=== #{params.inspect} ====")
+    if params[:controller] == "users" && ["show", "update", "edit"].include?(params[:action]) && current_user.id != params[:id].to_i
+      redirect_to user_path(current_user), :notice => "You have no access to that page."
+      return
     end
   end
+
 end

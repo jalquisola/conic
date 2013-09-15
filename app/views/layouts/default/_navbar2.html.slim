@@ -7,16 +7,16 @@ ul class="nav nav-pills pull-right"
     a href="/news" News
   /li
     a href="/freedom_wall" Wall
-  - if @user
+  - if current_user
     li class="dropdown" 
       a data-toggle="dropdown" href="#" 
-        = @user.username || @user.mobile_no
+        = current_user.username || current_user.mobile_no
         b class="caret"
       ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"
         li
-          a href="/users/#{@user.id}" Settings
+          a href="/users/#{current_user.id}" Settings
         li class="" 
-         a href="/signout" Sign out
+          a href="/signout" Sign out
   /- else
     li class="" 
       a class="btn-large" href="/signin" Sign in 

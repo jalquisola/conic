@@ -1,5 +1,6 @@
 class ShortMessagesController < ApplicationController
   before_action :set_short_message, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /short_messages
   # GET /short_messages.json
