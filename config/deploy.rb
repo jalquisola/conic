@@ -66,6 +66,7 @@ namespace :deploy do
     put File.read("config/redis.yml.example"), "#{shared_path}/config/redis.yml"
     put File.read("config/sidekiq.yml.example"), "#{shared_path}/config/sidekiq.yml"
     put File.read("config/twitter.yml.example"), "#{shared_path}/config/twitter.yml"
+    put File.read("config/globe_labs.yml.example"), "#{shared_path}/config/globe_labs.yml"
     puts "Now edit the config files in #{shared_path}."
   end
   after "deploy:setup", "deploy:setup_config"
@@ -76,6 +77,7 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/redis.yml #{release_path}/config/redis.yml"
     run "ln -nfs #{shared_path}/config/sidekiq.yml #{release_path}/config/sidekiq.yml"
     run "ln -nfs #{shared_path}/config/twitter.yml #{release_path}/config/twitter.yml"
+    run "ln -nfs #{shared_path}/config/globe_labs.yml #{release_path}/config/globe_labs.yml"
   end
   after "deploy:finalize_update", "deploy:symlink_config"
  
