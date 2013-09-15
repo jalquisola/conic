@@ -51,11 +51,15 @@
 
 .header{
   /*background-color: rgba(233, 10, 141, 0.96);*/
-  .nav > .active > a{
+  .nav > .active > a, ul > .open > a, .dropdown-menu > li > a{
     background-color: #0457EB;
     &:hover{
      background-color: #044ED1;
     }
+  }
+
+  .dropdown-menu{
+    background-color: #0457EB;
   }
 
   ul > li > a{
