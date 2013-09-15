@@ -15,5 +15,5 @@
 #= require jquery
 #= require jquery_ujs
 
-# require bootstrap
+#= require bootstrapv3.min
 
