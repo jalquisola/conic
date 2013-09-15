@@ -5,6 +5,8 @@ class CreateShortMessages < ActiveRecord::Migration
       t.string :target
       t.string :content
       t.string :msg_type
+      t.string :uid
+      t.string :udh
 
       t.timestamps
     end

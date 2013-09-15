@@ -1,5 +1,15 @@
 p#notice = notice
 
+table class="table table-hover"
+  tr
+    th Target
+    th Source
+    th Content
+
+  tr
+    td = @short_message.target
+    td = @short_message.source
+    td = @short_message.content
 
 = link_to 'Edit', edit_short_message_path(@short_message)
 '|

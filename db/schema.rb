@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 20130914123804) do
     t.string   "target"
     t.string   "content"
     t.string   "msg_type"
+    t.string   "uid"
+    t.string   "udh"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

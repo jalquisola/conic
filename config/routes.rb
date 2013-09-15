@@ -12,6 +12,8 @@ Conic::Application.routes.draw do
   #match "news" => "pages#news"
   #match "freedom_wall" => "pages#wall"
 
+  post "/sms/receive" => "sms#receive"
+
   resources :identities
   resources :sessions
   resources :users do

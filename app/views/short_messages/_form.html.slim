@@ -7,6 +7,10 @@
           li = message
 
   div class="form-group"
+    label for="short_message_target" Source #:
+    = f.text_field :source, {:class => "form-control", :placeholder => ""}
+
+  div class="form-group"
     label for="short_message_target" Cell #:
     = f.text_field :target, {:class => "form-control", :placeholder => "enter cell #"}
 
