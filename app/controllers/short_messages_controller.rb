@@ -29,9 +29,8 @@ class ShortMessagesController < ApplicationController
 
     respond_to do |format|
       if @short_message.save
-        client = Savon.client(wsdl: GLOBE_LABS_CONFIG["wsdl"], :endpoint => GLOBE_LABS_CONFIG["endpoint"])
-        resp = client.call(:send_sms, :message => {"uName" => GLOBE_LABS_CONFIG["uName"], "uPin" => GLOBE_LABS_CONFIG["uPin"], "MSISDN" => @short_message.target, "messageString" => @short_message.content, "Display" => 1, "udh" => "", "mwi" => "", "coding" => 0}) 
-
+        client = GlobeLabs.new
+        resp = client.send_sms(@short_message)
         Rails.logger.info("=== savon client resp: #{resp.inspect}")
 
         format.html { redirect_to @short_message, notice: 'Short message was successfully created.' }
