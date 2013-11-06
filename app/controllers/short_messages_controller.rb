@@ -6,7 +6,8 @@ class ShortMessagesController < ApplicationController
   # GET /short_messages
   # GET /short_messages.json
   def index
-    @short_messages = ShortMessage.order("created_at DESC").paginate(:page => params[:page], :per_page => 2)
+    @short_messages = ShortMessage.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+
     cell_nos = []
     @short_messages.each do |sms|
       cell_nos << sms.target
@@ -35,13 +36,30 @@ class ShortMessagesController < ApplicationController
   def create
     @short_message = ShortMessage.new(short_message_params)
 
+    client = GlobeLabs.new
+    target = @short_message.target
+    if target.present?
+      resp = client.send_sms(@short_message)
+      Rails.logger.info("=== savon client resp: #{resp.inspect}")
+    end
+
+    recepients = params[:recepients]
+    Rails.logger.info("==== params:#{params.inspect}")
+    if recepients.present?
+      Rails.logger.info("==== params:#{params[:recepients].inspect}")
+      recepients.each do |cell_no|
+        @short_message = ShortMessage.new(short_message_params)
+        @short_message.target = cell_no
+        if @short_message.save
+          resp = client.send_sms(@short_message)
+          Rails.logger.info("=== savon client resp: #{resp.inspect}")
+        end
+      end
+    end
+
     respond_to do |format|
       if @short_message.save
-        client = GlobeLabs.new
-        resp = client.send_sms(@short_message)
-        Rails.logger.info("=== savon client resp: #{resp.inspect}")
-
-        format.html { redirect_to @short_message, notice: 'Short message was successfully created.' }
+        format.html { redirect_to short_messages_path, notice: 'Short message was successfully created.' }
         format.json { render action: 'show', status: :created, location: @short_message }
       else
         format.html { render action: 'new' }

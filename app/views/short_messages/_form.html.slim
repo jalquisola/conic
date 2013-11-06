@@ -15,8 +15,21 @@
     = f.text_field :target, {:class => "form-control", :placeholder => "enter cell #"}
 
   div class="form-group"
+    label for="recepients" Recepients: 
+    select name="recepients[]" class="multiselect" multiple="multiple"
+      - User.all.each do |user|
+        option value=user.mobile_no = user.username
+
+
+  div class="form-group"
     label for="short_message_content" Message:
     = f.text_area :content, {:class => "form-control", :placeholder => "Enter Message"}
  
   .actions = f.submit 'Save'
+
+/javascript:
+  $(document).ready(function(){
+    $("select.multiselect").multiselect();
+  });
+  
 

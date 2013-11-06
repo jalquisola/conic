@@ -16,4 +16,5 @@
 #= require jquery_ujs
 
 #= require bootstrapv3.min
+#= require multiselect
 
