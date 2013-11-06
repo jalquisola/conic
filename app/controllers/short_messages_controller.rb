@@ -1,3 +1,4 @@
+require "will_paginate"
 class ShortMessagesController < ApplicationController
   before_action :set_short_message, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
@@ -5,7 +6,14 @@ class ShortMessagesController < ApplicationController
   # GET /short_messages
   # GET /short_messages.json
   def index
-    @short_messages = ShortMessage.all
+    @short_messages = ShortMessage.order("created_at DESC").paginate(:page => params[:page], :per_page => 2)
+    cell_nos = []
+    @short_messages.each do |sms|
+      cell_nos << sms.target
+      cell_nos << sms.source
+    end
+
+    @users = User.where(:mobile_no => cell_nos).index_by(&:mobile_no)
   end
 
   # GET /short_messages/1

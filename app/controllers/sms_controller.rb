@@ -6,6 +6,7 @@ class SmsController < ActionController::Base
     Rails.logger.info("sms#recieve params: #{params.inspect}")
     request_body = request.body.read
 
+    Rails.logger.info("sms#recieve request body: #{request_body.inspect}")
     body = Hash.from_xml(request_body)["message"]["param"].inject({}) do |result, elem| 
          result[elem["name"]] = elem["value"] 
          result 
